@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/bootstrap-icons/bootstrap-icons.css}"/>
+        <title>Estadisticas</title>
+    </head>
+    <body>
+        <main>
+            <header th:replace="Fragmentos/header :: header"></header>
+
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Estadisticas - Equipos</h1>
+
+                <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Pais</th>
+                            <th>Cantidad de equipos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="equipos, info : ${listaEquipos}">
+                            <td th:text="${equipos.pais}"></td>
+                            <td th:text="${equipos.cantidad}"></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
