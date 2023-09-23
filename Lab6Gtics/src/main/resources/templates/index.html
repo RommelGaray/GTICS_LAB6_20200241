@@ -8,20 +8,7 @@
 </head>
 <body>
 <main>
-    <div th:class="container">
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" th:href="@{/viaje}">Viajes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/mascota}">Mascotas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/persona}">Persona</a>
-            </li>
-        </ul>
-
-    </div>
+    <header th:replace="Fragmentos/header :: header"></header>
 </main>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 
