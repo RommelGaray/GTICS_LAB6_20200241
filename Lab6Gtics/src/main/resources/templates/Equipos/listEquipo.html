@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/bootstrap-icons/bootstrap-icons.css}"/>
+        <title>Lista de equipos</title>
+    </head>
+    <body>
+        <main>
+            <header th:replace="Fragmentos/header :: header"></header>
+
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Lista de equipos</h1>
+                <div class="d-flex mt-3 mb-4">
+                    <a class="btn btn-primary" th:href="@{'/equipos/newForm'}">Nuevo equipo</a>
+                    <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
+                </div>
+                <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Modelo</th>
+                            <th>Numero de serie</th>
+                            <th>Sitio</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="equipos, info : ${listaEquipos}">
+                            <td th:text="${info.index + 1}"></td>
+                            <td th:text="${equipos.deviceName}"></td>
+                            <td th:text="${equipos.deviceType}"></td>
+                            <td th:text="${equipos.model}"></td>
+                            <td th:text="${equipos.serialNumber}"></td>
+                            <td th:text="${equipos.siteID.siteName}"></td>
+
+                            <td><a class="btn btn-primary"
+                                   th:href="@{'/equipos/edit?id=' + ${equipos.id}}"><i class="bi bi-pencil-square"></i></a>
+                            </td>
+                            <td><a class="btn btn-danger"
+                                   th:href="@{'/equipos/delete?id=' + ${equipos.id}}"><i class="bi bi-trash3"></i></a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>

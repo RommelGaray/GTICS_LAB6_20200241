@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Nuevo equipo</title>
+    </head>
+    <body>
+        <main>
+            <header th:replace="Fragmentos/header :: header"></header>
+
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 mb-3 border-bottom">Nuevo equipo</h1>
+
+                <form method="post" th:action="@{/equipos/save}" class="mt-2">
+                    <div class="mb-3">
+                        <label for="deviceName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="deviceName" id="deviceName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="deviceType" class="form-label">Tipo</label>
+                        <input type="text" class="form-control" name="deviceType" id="deviceType">
+                    </div>
+                    <div class="mb-3">
+                        <label for="model" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" name="model" id="model">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="serialNumber" class="form-label">Numero de serie</label>
+                        <input type="text" class="form-control" name="serialNumber" id="serialNumber">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="SiteID" class="form-label">Selector de Sitios</label>
+                        <select class="form-select" name="SiteID" id="SiteID">
+                            <option th:each="sitios: ${listaSitios}"
+                                    th:text="${sitios.siteName}" th:value="${sitios.id}">Open this select menu</option>
+                        </select>
+                    </div>
+
+
+                    <a th:href="@{/equipos}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
